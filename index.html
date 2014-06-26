@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>CellML Specification : Unofficial working draft</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /></head><body><div class="article" lang="en" xml:lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="idm320769388128"></a>CellML Specification : Unofficial working draft</h1></div></div><hr /></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#idm320769375696">1. Definitions</a></span></dt><dt><span class="section"><a href="#idm320769375824">2. General matters</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769368432">2.1. CellML and XML</a></span></dt><dt><span class="section"><a href="#idm320769287120">2.2. Equivalent CellML Infosets</a></span></dt><dt><span class="section"><a href="#idm320769279440">2.3. Character information items</a></span></dt><dt><span class="section"><a href="#idm320769278064">2.4. Use of namespaces</a></span></dt><dt><span class="section"><a href="#idm320769267952">2.5. Extension information items</a></span></dt><dt><span class="section"><a href="#idm320769260928">2.6. Identifiers</a></span></dt><dt><span class="section"><a href="#idm320769258224">2.7. Specific information items</a></span></dt><dt><span class="section"><a href="#idm320769250432">2.8. RDF Element Information Items</a></span></dt></dl></dd><dt><span class="section"><a href="#idm320769304464">3. Secondary specifications</a></span></dt><dt><span class="section"><a href="#idm320769302000">4. Data representation formats in CellML</a></span></dt><dt><span class="section"><a href="#idm320769355312">5. The model element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769349104">5.1. Top-level of CellML Infosets</a></span></dt><dt><span class="section"><a href="#idm320769362944">5.2. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#component-element">6. The component element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769367280">6.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#variable-element">7. The variable element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769365136">7.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#connection-element">8. The connection element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769224400">8.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#map-variables-element">9. The map_variables element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769354432">9.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#encapsulation-element">10. The encapsulation element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769209600">10.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#component-ref-element">11. The component_ref element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769221056">11.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#import-element">12. The import element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769202800">12.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#import-component-element">13. The import component element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769200720">13.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#import-units-element">14. The import units element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769193504">14.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#units-element">15. The units element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769351808">15.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#unit-element">16. The unit element information item</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769173648">16.1. Specific information items</a></span></dt></dl></dd><dt><span class="section"><a href="#idm320769162784">17. Interpretation of CellML models</a></span></dt><dd><dl><dt><span class="section"><a href="#idm320769103248">17.1. Component reference</a></span></dt><dt><span class="section"><a href="#idm320768771568">17.2. Variable reference</a></span></dt><dt><span class="section"><a href="#idm320768766416">17.3. Interpretation of encapsulation</a></span></dt><dt><span class="section"><a href="#idm320768753776">17.4. Variable equivalence networks</a></span></dt><dt><span class="section"><a href="#units-reference">17.5. Units reference</a></span></dt><dt><span class="section"><a href="#interpretation-of-units">17.6. Interpretation of units</a></span></dt><dt><span class="section"><a href="#units-on-variables">17.7. The effect of units on variables</a></span></dt><dt><span class="section"><a href="#type-interpretation">17.8. Interpretation of the <code class="literal">type</code> attribute</a></span></dt><dt><span class="section"><a href="#idm320768430176">17.9. Interpretation of imports</a></span></dt><dt><span class="section"><a href="#idm320768421216">17.10. Interpretation of the mathematics</a></span></dt><dt><span class="section"><a href="#idm320768379952">17.11. Type inference requirement</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#idm320768882144">Normative References</a></span></dt></dl></div><div class="abstract"><p class="title"><b>Abstract</b></p><p>
+This document is an unofficial working draft. The below describes the intended
+status of the specification, and not the current status right now.
+  </p><p>
+This document specifies CellML 1.2, an XML-based language for describing and
+exchanging mathematical models.
+  </p><p>
+This is the <span class="emphasis"><em>normative</em></span> specification of CellML. It is intended to
+provide the minimum amount of information needed to accurately describe CellML.
+An alternative version is available that is annotated with much more
+explanatory material.
+  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm320769375696"></a>1. Definitions</h2></div></div></div><p>
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+ NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in
+[<a href="#RFC2119">RFC2119</a>].
+  </p><p>
+The key phrase "information item", as well as any specific type of information
+item such as an "element information item", are to be interpreted as described
+in [<a href="#XML-INFOSET">XML-INFOSET</a>].
+  </p><div class="glosslist"><dl><dt>CellML Infoset</dt><dd><p>
+An XML Information Set containing a hierarchy of information items
+conforming to the rules described in this document.
+        </p></dd><dt>CellML Model</dt><dd><p>
+A mathematical model represented by a hierarchy of one or more CellML Infosets,
+according to the rules described in this document.
+        </p></dd><dt>CellML Processing Software</dt><dd><p>
+Software that processes CellML in accordance with the rules of this document.
+        </p></dd><dt>Namespace</dt><dd><p>
+An XML namespace, as defined in [<a href="#XML-NAMESPACE">XML-NAMESPACE</a>].
+        </p></dd><dt>CellML Namespace</dt><dd><p>
+          Any namespace starting with <code class="uri">http://www.cellml.org/cellml/</code>
+        </p></dd><dt>CellML 1.2 Namespace</dt><dd><p>
+          The namespace <code class="uri">http://www.cellml.org/cellml/1.2#</code>
+        </p></dd><dt>MathML Namespace</dt><dd><p>
+          The namespace <code class="uri">http://www.w3.org/1998/Math/MathML</code>
+        </p></dd><dt>RDF Namespace</dt><dd><p>
+          The namespace <code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+        </p></dd><dt>CellML Metadata Namespace</dt><dd><p>
+The namespace <code class="uri">http://www.cellml.org/metadata/1.0#</code>
+        </p></dd><dt>Extension Namespace</dt><dd><p>
+          Any namespace that is not a CellML namespace, and is not the RDF namespace, the MathML namespace, <code class="uri">http://www.w3.org/XML/1998/namespace</code>, <code class="uri">http://www.w3.org/2000/xmlns/</code>, <code class="uri">http://www.w3.org/1999/xlink</code>, or the empty namespace.
+        </p></dd><dt>Basic Latin alphabetic character</dt><dd><p>
+A Unicode character in the range U+0041 to U+005A or in the range U+0061 to U+007A.
+        </p></dd><dt>European numeric character</dt><dd><p>
+A Unicode character in the range U+0030 to U+0039.
+        </p></dd><dt>Basic Latin alphanumeric character</dt><dd><p>
+A Unicode character that is either a basic Latin alphabetic character or a European numeric character.
+        </p></dd><dt>Basic Latin underscore</dt><dd><p>
+The Unicode character U+005F.
+        </p></dd><dt>Whitespace character</dt><dd><p>
+Any one of the Unicode characters U+0020, U+0009, U+000D or U+000A.
+        </p></dd><dt>RDF Triple</dt><dd><p>
+As defined in [<a href="#RDF-CONCEPTS">RDF-CONCEPTS</a>].
+        </p></dd><dt>Independent variable set</dt><dd><p>
+A set of zero variables in the model (each represented by a set of one or more connected CellML variables) that are defined externally to the model.
+        </p></dd></dl></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm320769375824"></a>2. General matters</h2></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769368432"></a>2.1. CellML and XML</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+Every CellML Infoset SHALL be represented in an XML document that conforms with
+the well-formedness requirements of the XML 1.0 specification [<a href="#XML">XML</a>].
+        </p></li><li><p>
+In this document, the remaining provisions relating to CellML Infosets shall be
+interpreted as being constraints on the XML Information Set represented by that
+CellML Infoset.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769287120"></a>2.2. Equivalent CellML Infosets</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+Two CellML Infosets shall be equivalent if one can be transformed to another by
+making zero or more of the following changes:
+        </p><div class="orderedlist"><ol type="a"><li><p>
+Changing the representation the XML file in ways that
+do not change the XML Information Set represented
+            </p></li><li><p>
+Adding, removing, and/or modifying comment information items.
+            </p></li><li><p>
+Changing (inserting, removing, and/or modifying) one or more namespace
+information items, and/or modifying the prefix of one or more information
+items, without changing the namespace that any information item is in.
+            </p></li><li><p>
+The following paragraph applies only to character information items for which all
+ancestor element information items are in the CellML, the MathML or the
+RDF namespace.
+            </p><p>
+Inserting or removing character information items that consist entirely of
+whitespace characters, changing the number of whitespace characters in such
+an information item, or changing the number of whitespace characters at the
+beginning or end of a character information item.
+            </p></li></ol></div></li><li><p>
+CellML Processing Software MUST treat CellML Infosets that are equivalent
+according to the above rules in an identical fashion.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769279440"></a>2.3. Character information items</h3></div></div></div><p>
+      An element information item in the CellML namespace MUST NOT contain any
+      character information items, except for character information items that
+      consist entirely of whitespace characters.
+    </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769278064"></a>2.4. Use of namespaces</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+CellML Infosets MUST NOT contain any element or attribute information items,
+except as permitted in this specification.
+        </p></li><li><p>
+CellML Infosets MUST NOT contain any character information items that are
+children of element information items in a CellML namespace, except as
+permitted in this specification.
+        </p></li><li><p>
+CellML Processing Software SHOULD NOT attempt to process CellML Infosets that
+contain information items in a CellML namespace other than the CellML 1.2 namespaces,
+unless they have been designed to support the version of CellML corresponding to the
+namespace.
+        </p></li><li><p>
+CellML Infosets MUST NOT contain any element information items in the RDF
+namespace, unless:
+          </p><div class="orderedlist"><ol type="a"><li>
+the element information item or one of its ancestors is an element information
+item in the RDF namespace, with local name <code class="literal">RDF</code> (the RDF element information
+item), and,
+            </li><li>
+the RDF element information item forms the top-level of a valid
+RDF/XML tree, per production 7.2.9 in [<a href="#RDF-XML">RDF-XML</a>].
+            </li></ol></div><p>
+        </p></li><li><p>
+CellML Infosets MUST NOT contain any element information items in the MathML
+namespace, unless:
+          </p><div class="orderedlist"><ol type="a"><li>
+the element information item or one of its ancestors is an element information
+item in the MathML namespace, with local name <code class="literal">math</code> (the math element information
+item), and,
+            </li><li>
+the math element information item forms the top-level of a valid
+MathML tree, as described in [<a href="#MathML">MathML</a>].
+            </li></ol></div><p>
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769267952"></a>2.5. Extension information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+CellML Infosets MAY contain zero or more element or attribute information items
+in an extension namespace (extension information items), as children of CellML
+Information Items.
+        </p></li><li><p>
+          Information items in the empty namespace, that appear as children of extension element information items, SHALL also be treated as extension information items.
+        </p></li><li><p>
+Extension information items MAY contain extension information items as their
+children. In addition, extension elements MAY contain presentation MathML
+children. For the avoidance of doubt, it is noted that extension information
+items MAY also contain any other information items not disallowed
+by this specification or a referenced normative specification.
+        </p></li><li><p>
+CellML Processing Software MUST NOT raise an error solely because it encounters
+an unrecognised extension element.
+        </p></li><li><p>
+CellML Processing Software that reads CellML and then writes a modified
+version back out SHOULD preserve unrecognised extension information items when
+the parent information item is not modified.
+        </p></li><li><p>
+CellML Processing Software MUST NOT allow the mathematical interpretation of a
+CellML Model to be altered by any information present in extension information
+items.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769260928"></a>2.6. Identifiers</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Any element information item in the CellML namespace MAY contain an
+          attribute information item with name id, in the CellML Metadata
+          Namespace. This attribute information item SHALL be treated as
+          having attribute type ID, as defined in section 3.3.1 of
+          [<a href="#XML">XML</a>].
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769258224"></a>2.7. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          A specific information item is an information item that is not:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                a comment information item, or,
+              </p></li><li><p>
+                a character information item, or,
+              </p></li><li><p>
+                an extension information item or a descendant of such an information item, or,
+              </p></li><li><p>
+                a namespace information item.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          Specific information items MUST NOT appear in a CellML Infoset except where
+          explicitly allowed by this specification, or where allowed by a
+          normative specification referenced by this specification.
+        </p></li><li><p>
+          The order in which specific information items appear as children of
+          an element information item defined in this specification SHALL NOT
+          affect the interpretation of the CellML Model.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769250432"></a>2.8. RDF Element Information Items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every element information item in the CellML namespace MAY contain
+          zero or more RDF Element Information Item children.
+        </p></li><li><p>
+          An RDF Element Information Item SHALL be an element item in the RDF
+          namespace, with local name <code class="literal">RDF</code> (the RDF element information item), and
+          MUST form the top-level of a valid RDF/XML tree, per production
+          7.2.9 in [<a href="#RDF-XML">RDF-XML</a>], and SHALL be a child of an
+          element information item in the CellML namespace.
+        </p></li><li><p>
+          CellML Processing Software MUST NOT allow the mathematical
+          interpretation of a CellML Model to be altered by any information
+          present in RDF data.
+        </p></li><li><p>
+          The "set of all RDF triples" associated with a CellML Infoset SHALL
+          refer to the union of all sets of RDF triples produced by parsing all
+          the RDF Element Information Items according to the RDF/XML specification.
+        </p></li><li><p>
+          Two CellML Infosets that differ only by the addition, removal, or
+          modification of RDF Element Information Items (or Information Items
+          descended from them), but that have the same set of all RDF triples,
+          SHALL be termed RDF-equivalent CellML Infosets.
+        </p></li><li><p>
+          CellML Processing Software MUST NOT treat RDF-equivalent CellML
+          Infosets differently.
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm320769304464"></a>3. Secondary specifications</h2></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+        A CellML Secondary Specification SHALL be a document that places additional restrictions on the structure and interpretation of CellML Models and CellML Infosets.
+      </p></li><li><p>
+        CellML Secondary Specifications MUST NOT conflict with, or override, any of the assertions or requirements in this specification.
+      </p></li><li><p>
+        CellML Processing software MUST either:
+        </p><div class="orderedlist"><ol type="a"><li><p>
+              support one or more specific CellML Secondary Specifications, and correctly process all models that comply both with this specification and with one or more of the selected CellML Secondary Specifications, or,
+            </p></li><li><p>
+              correctly process all models that comply with this specification.
+            </p></li></ol></div><p>
+      </p></li><li><p>
+        Despite the previous paragraph, CellML Secondary Specifications MAY identify particular unambiguously defined subsets of all CellML Models as being optional for implementors, and CellML Processing Software MAY choose to exercise such options.
+      </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm320769302000"></a>4. Data representation formats in CellML</h2></div></div></div><p>
+    The following data representation formats are defined for use in this specification:
+    </p><div class="orderedlist"><ol type="1"><li><p>
+          A CellML identifier:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+SHALL be a sequence of Unicode characters.
+              </p></li><li><p>
+SHALL NOT contain any characters except basic Latin alphanumeric characters and basic Latin underscores.
+              </p></li><li><p>
+SHALL contain one or more basic Latin alphabetic characters.
+              </p></li><li><p>
+SHALL NOT begin with a European numeric character.
+              </p></li><li><p>
+SHALL, when comparing two identifiers, be considered identical to another
+identifier if and only if both identifiers have identical sequences of
+Unicode character codes.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          A non-negative integer string:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+SHALL be a base 10 representation of a non-negative integer.
+              </p></li><li><p>
+SHALL consist entirely of European numeric characters.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          An integer string:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+SHALL be a base 10 representation of an integer.
+              </p><p>
+When the integer being represented is negative, SHALL consist of the Basic Latin
+hyphen-minus character U+002D, followed by the non-negative integer string
+representation of the absolute value of the integer.
+              </p><p>
+When the integer being represented is non-negative, SHALL consist of the non-negative
+integer string representation of the integer.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          A basic real number string:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+SHALL be a base 10 representation of a real number.
+              </p></li><li><p>
+Where the number is negative, SHALL begin with the Basic Latin
+hyphen-minus character U+002D as the sign indicator.
+              </p></li><li>
+MAY contain a single decimal point separator, which SHALL be the basic
+Latin full stop character U+002E.
+            </li><li><p>
+Other than the sign indicator and the decimal point separator, SHALL consist
+only of European numeric characters.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          A real number string:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                
+SHALL be a base 10 representation of a real number
+<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+  <mml:mrow>
+    <mml:mi>r</mml:mi>
+    <mml:mo>=</mml:mo>
+    <mml:mrow>
+      <mml:mi>s</mml:mi>
+      <mml:mo>×</mml:mo>
+      <mml:msup>
+        <mml:mn>10</mml:mn>
+        <mml:mi>e</mml:mi>
+      </mml:msup>
+    </mml:mrow>
+  </mml:mrow>
+</mml:math>, where s is the significand, a real number, and e is the
+exponent, an integer.
+              </p></li><li><p>
+The representation of the number SHALL be the representation of the significand
+followed immediately by the representation of the exponent.
+              </p></li><li><p>
+The significand SHALL be represented as a basic real number string.
+              </p></li><li><p>
+If the exponent is zero, the exponent MAY be represented by an
+empty string, or MAY be represented according to the following rule. If the
+exponent is non-zero, it MUST be represented according to the following rule.
+              </p></li><li><p>
+An exponent SHALL be represented by an exponent separator character, followed
+by the integer string representation of the exponent's value. The exponent
+separator character SHALL be either the Unicode Basic Latin character 'E' or
+the Unicode Basic Latin character 'e'.
+              </p></li></ol></div><p>
+        </p></li></ol></div><p>
+  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm320769355312"></a>5. The model element information item</h2></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769349104"></a>5.1. Top-level of CellML Infosets</h3></div></div></div><p>
+      The top-level element information item in a CellML Infoset MUST be an
+      element information item in the CellML 1.2 namespace, with local name
+      model. This element information item is referred to in this specification
+      as the model element.
+    </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769362944"></a>5.2. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every model element MUST contain a name attribute in the empty
+          namespace. The value of the name attribute MUST be a valid CellML
+          identifier, and SHALL be interpreted as a unique identifier for the
+          CellML Infoset.
+        </p></li><li><p>
+          A model element MAY contain zero or more additional specific
+          information item children, each of which MUST be of one of the
+          following types:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                a component element (<a href="#component-element" title="6. The component element information item">Section 6, “The component element information item”</a>),
+              </p></li><li><p>
+                a connection element (<a href="#connection-element" title="8. The connection element information item">Section 8, “The connection element information item”</a>),
+              </p></li><li><p>
+                an encapsulation element (<a href="#encapsulation-element" title="10. The encapsulation element information item">Section 10, “The encapsulation element information item”</a>),
+              </p></li><li><p>
+                an import element (<a href="#import-element" title="12. The import element information item">Section 12, “The import element information item”</a>),
+              </p></li><li><p>
+                a units element (<a href="#units-element" title="15. The units element information item">Section 15, “The units element information item”</a>)
+              </p></li></ol></div><p>
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="component-element"></a>6. The component element information item</h2></div></div></div><p>
+    Component element information items (referred to in this specification as
+    component elements) are element information items in the CellML 1.2
+    namespace with local name <code class="literal">component</code>, and which appear as a child
+    of a model element.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769367280"></a>6.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every component element MUST contain a name attribute in the empty
+          namespace. The value of the name attribute MUST be a valid CellML
+          identifier. The value of the name attribute MUST NOT be identical to
+          the name attribute on any other component element or import component
+          element in the CellML Infoset.
+        </p></li><li><p>
+          A component element MAY contain zero or more specific
+          information item children, each of which MUST be of one of the
+          following types:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                a variable element
+                (<a href="#variable-element" title="7. The variable element information item">Section 7, “The variable element information item”</a>).
+              </p></li><li><p>
+                an element information item in the MathML namespace, and with
+                local name math, which MUST be the top-level of a content
+                MathML tree, as described in [<a href="#MathML">MathML</a>].
+              </p></li><li><p>
+                a units element
+                (<a href="#units-element" title="15. The units element information item">Section 15, “The units element information item”</a>).
+              </p></li></ol></div><p>
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="variable-element"></a>7. The variable element information item</h2></div></div></div><p>
+    Variable element information items (referred to in this specification as
+    variable elements) are element information items in the CellML 1.2
+    namespace with local name equal to variable which appear as a child
+    of a component element.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769365136"></a>7.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every variable element MUST have each of the following attribute
+          information items in the empty namespace:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                The name attribute. The value of the name attribute MUST be a
+                valid CellML Identifier. The value of the name attribute MUST
+                NOT be identical to the name attribute on any sibling variable
+                element.
+              </p></li><li><p>
+                The type attribute. The primary specification does not place any restrictions
+                on the value of the type attribute, but secondary specifications SHOULD
+                define the types supported in that secondary specification.
+              </p><p>
+                A type attribute value of real SHALL be interpreted as indicating that the
+                variable is real valued. A type attribute value of boolean SHALL be interpretated
+                as indicating that there are two possible values, true and false.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          Every variable element MAY contain one or more of the following attribute
+          information items in the empty namespace:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                The public_interface attribute. If the attribute is present, it
+                MUST have value yes or no.
+              </p></li><li><p>
+                The private_interface attribute. If the attribute is present, it
+                MUST have value yes or no.
+              </p></li><li><p>
+                The units attribute. If the attribute is present, the value MUST be a
+                valid CellML Identifier, and MUST meet the constraints described
+                in <a href="#units-on-variables" title="17.7. The effect of units on variables">Section 17.7, “The effect of units on variables”</a>. This attribute MUST be present
+                if the type attribute has the value real.
+              </p></li></ol></div><p>
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="connection-element"></a>8. The connection element information item</h2></div></div></div><p>
+    Connection element information items (referred to in this specification as
+    connection elements) are element information items in the CellML
+    1.2 namespace with local name equal to connection.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769224400"></a>8.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every connection element MUST contain a component_1 attribute in the
+          empty namespace.  The value of the component_1 attribute MUST
+          be a valid CellML Identifier. The value of this attribute MUST be equal
+          to the name attribute on a component or import component element in
+          the CellML Infoset.
+        </p></li><li><p>
+          Every connection element MUST contain a component_2 attribute in the
+          empty namespace.  The value of the component_2 attribute MUST
+          be a valid CellML Identifier. The value of this attribute MUST be equal
+          to the name attribute on a component or import component element in
+          the CellML Infoset.
+        </p></li><li><p>
+          Every connection element MUST contain one or more map_variables
+          elements (<a href="#map-variables-element" title="9. The map_variables element information item">Section 9, “The map_variables element information item”</a>).
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="map-variables-element"></a>9. The map_variables element information item</h2></div></div></div><p>
+    map_variables element information items (referred to in this specification
+    as map_variables elements) are element information items in the CellML 1.2
+    namespace with local name equal to map_variables which appear as a child
+    of a connection element.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769354432"></a>9.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Each map_variables element MUST contain a variable_1 attribute. The
+          value of the variable_1 attribute MUST be a valid CellML Identifier.
+          The value of this attribute MUST be equal to the name attribute on a
+          variable element child of the component element referenced by the
+          component_1 attribute on the connection element parent.
+        </p></li><li><p>
+          Each map_variables element MUST contain a variable_2 attribute. The
+          value of the variable_2 attribute MUST be a valid CellML Identifier.
+          The value of this attribute MUST be equal to the name attribute on
+          a variable element child of the component element referenced by the
+          component_2 attribute on the connection element parent.
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="encapsulation-element"></a>10. The encapsulation element information item</h2></div></div></div><p>
+    Encapsulation element information items (referred to in this specification as
+    encapsulation elements) are element information items in the CellML 1.2
+    namespace with local name equal to encapsulation.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769209600"></a>10.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every encapsulation element MUST contain one or more component_ref elements
+          (<a href="#component-ref-element" title="11. The component_ref element information item">Section 11, “The component_ref element information item”</a>).
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="component-ref-element"></a>11. The component_ref element information item</h2></div></div></div><p>
+    component_ref element information items (referred to in this
+    specification as component_ref elements) are element information items
+    in the CellML 1.2 namespace with local name equal to component_ref.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769221056"></a>11.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every component_ref element MUST contain an attribute
+          information item in the empty namespace and with local name
+          component. The value of this attribute MUST be a valid CellML
+          Identifier, and MUST match the name attribute on a component or
+          import component element in the CellML Infoset.
+        </p></li><li><p>
+          Every component_ref element MAY in turn contain zero or more
+          component_ref element children. In addition, component_ref elements
+          that are children of encapsulation elements MUST contain at least one
+          component_ref element child.
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="import-element"></a>12. The import element information item</h2></div></div></div><p>
+    Import element information items (referred to in this specification as
+    import elements) are element information items in the CellML 1.2
+    namespace with local name equal to import.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769202800"></a>12.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every import element MUST contain the following attribute information items:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                An attribute information item in the namespace <code class="uri">http://www.w3.org/1999/xlink</code>, and with local name href.
+                The value of this attribute SHALL be a valid locator href, as defined
+                in section 5.4 of the XLink specification ([<a href="#XLINK">XLINK</a>]).
+                The href attribute SHALL be treated according to the XLink specification,
+                by applying the rules for simple-type elements. When describing an import
+                element or one of its children, the phrase "imported CellML Infoset"
+                SHALL refer to the CellML Infoset obtained by parsing the XML document
+                referenced by the href attribute.
+              </p></li><li><p>
+                An attribute information with local name <code class="literal">name</code>, in the CellML 1.2 namespace. The value of the name attribute MUST be a
+                valid CellML Identifier. The value of the name attribute MUST
+                NOT be identical to the name attribute on any sibling import
+                element.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          Imported CellML Infosets make up part of the model, so for the entire model to be valid, all imported CellML Infosets MUST also be valid under this specification.
+        </p></li><li><p>
+          Every import element MAY contain zero or more specific information children, each of which MUST be of one of the following types:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                an import component element (<a href="#import-component-element" title="13. The import component element information item">Section 13, “The import component element information item”</a>).
+              </p></li><li><p>
+                an import units element (<a href="#import-units-element" title="14. The import units element information item">Section 14, “The import units element information item”</a>).
+              </p></li></ol></div><p>
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="import-component-element"></a>13. The import component element information item</h2></div></div></div><p>
+    Import component element information items (referred to in this specification as
+    import component elements) are element information items in the CellML 1.2
+    namespace with local name equal to component which appear as children of
+    import elements.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769200720"></a>13.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every import component element MUST contain a name attribute in the empty
+          namespace. The value of the name attribute MUST be a valid CellML
+          identifier. The value of the name attribute MUST NOT be identical to
+          the name attribute of any other import component or component element in the
+          CellML Infoset.
+        </p></li><li><p>
+          Every import component element MUST contain a component_ref attribute in the
+          empty namespace. The value of the component_ref attribute MUST be a valid
+          CellML identifier. The value of the component_ref attribute MUST
+          match the value of the name attribute on a component or import component
+          element in the imported CellML Infoset. The value of the component_ref
+          attribute MUST NOT match the value of the component_ref attribute on any
+          sibling import component element.
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="import-units-element"></a>14. The import units element information item</h2></div></div></div><p>
+    Import units element information items (referred to in this specification as
+    import units elements) are element information items in the CellML 1.2
+    namespace with local name equal to units which appear as children of
+    import elements.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769193504"></a>14.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every import units element MUST contain a name attribute in the empty
+          namespace. The value of the name attribute MUST be a valid CellML
+          identifier. The value of the name attribute MUST NOT be identical to
+          the name attribute of any other import units or units element in the
+          CellML Infoset.
+        </p></li><li><p>
+          Every import units element MUST contain a units_ref attribute in the
+          empty namespace. The value of the units_ref attribute MUST be a valid
+          CellML identifier. The value of the units_ref attribute MUST
+          match the value of the name attribute on a units or import units
+          element in the imported CellML Infoset. The value of the units_ref
+          attribute MUST NOT match the value of the units_ref attribute on any
+          sibling import units element.
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="units-element"></a>15. The units element information item</h2></div></div></div><p>
+    Units element information items (referred to in this specification as
+    units elements) are element information items in the CellML 1.2
+    namespace with local name equal to units, and with either a component
+    or model element as their parent.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769351808"></a>15.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every units element MUST contain a name attribute in the empty
+          namespace. The value of the name attribute MUST be a valid CellML
+          identifier. Where the parent of the units element is a model element,
+          the value of the name attribute MUST NOT be identical to the name
+          attribute of any other units element child of that model element,
+          or of any import units element in the CellML Infoset. Where the parent
+          of the units element is a component element, the value of the name
+          attribute MUST NOT be identical to the name attribute of any other
+          units element child of that component element. In any case, the value
+          of the name attribute MUST NOT be equal to a cell in the name column
+          of <a href="#units-table" title="Table 1. built-in units">Table 1, “built-in units”</a>.
+        </p></li><li><p>
+          A units element MAY contain a base_units attribute in the empty
+          namespace. If present, the value of the base_units attribute MUST
+          be equal to either yes or no. If the attribute is present and equal
+          to yes, then the following paragraph does not apply.
+        </p></li><li><p>
+          A units element MAY contain one or more unit element children
+          (<a href="#unit-element" title="16. The unit element information item">Section 16, “The unit element information item”</a>).
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="unit-element"></a>16. The unit element information item</h2></div></div></div><p>
+    Unit element information items (referred to in this specification as
+    unit elements) are element information items in the CellML 1.2
+    namespace with local name equal to unit, and with a units element as their parent.
+  </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769173648"></a>16.1. Specific information items</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Every unit element MUST contain a units attribute information item
+          in the empty namespace. The value of the units attribute MUST be a
+          valid units reference, as defined in <a href="#units-reference" title="17.5. Units reference">Section 17.5, “Units reference”</a>.
+          The units element inclusion digraph SHALL be a conceptual digraph
+          defined for the purpose of the constraint in this paragraph, and
+          which contains one node for every units element in the CellML Model. The
+          units element inclusion digraph SHALL contain an arc from
+          units element A to units element B if and only if units element A
+          contains a unit element with units attribute value that is a
+          units reference to units element B. The value of the units attribute
+          MUST NOT be such that the units element inclusion digraph contains
+          one or more cycles.
+        </p></li><li><p>
+          A unit element MAY contain any of the following attribute information
+          items in the empty namespace:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                The prefix attribute. If present, the value of the attribute
+                MUST meet the constraints specified in
+                <a href="#interpretation-of-units" title="17.6. Interpretation of units">Section 17.6, “Interpretation of units”</a>.
+              </p></li><li><p>
+                The offset attribute. If present, the value of the attribute
+                MUST be a real number string. If the attribute is present and
+                has value other than a real number string representing 0,
+                then this unit element MUST NOT have any sibling
+                unit elements, and the value of the exponent attribute, if
+                present, MUST be a real number string representing 1.
+              </p></li><li><p>
+                The multiplier attribute. If present, the value of the attribute
+                MUST be a real number string.
+              </p></li><li><p>
+                The exponent attribute. If present, the value of the attribute
+                MUST be a real number string.
+              </p></li></ol></div><p>
+        </p></li></ol></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm320769162784"></a>17. Interpretation of CellML models</h2></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320769103248"></a>17.1. Component reference</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          A component reference SHALL be the name of a component, and SHALL be
+          interpreted based on the context within the CellML Model in which it occurs.
+        </p></li><li><p>
+          A component reference present in an information item that is a
+          descendant of a <code class="literal">model</code> element SHALL be identical to either the <code class="literal">name</code>
+          attribute on a <code class="literal">component</code> element or to the <code class="literal">name</code> attribute on an import
+          component element.
+        </p></li><li><p>
+          A component reference that is identical to the <code class="literal">name</code> attribute on a
+          <code class="literal">component</code> element SHALL be treated as a reference to that <code class="literal">component</code>
+          element.
+        </p></li><li><p>
+          A component reference that is identical to the <code class="literal">name</code> attribute on an
+          import component element SHALL be treated as if the component reference
+          appeared in the imported model, and referred to the name specified in
+          the <code class="literal">component_ref</code> attribute of the import component element.
+        </p></li><li><p>
+          It is noted for the avoidance of doubt that CellML Models MAY apply
+          the previous rule recursively, to reference an import component element
+          that in turn references another import component element.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320768771568"></a>17.2. Variable reference</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          When present in an information item that is a descendant of a
+          <code class="literal">component</code> element, a variable reference SHALL be the
+          name of a variable, and SHALL refer to the <code class="literal">variable</code> element in the same
+          component with a <code class="literal">name</code> attribute identical to the variable
+          reference.
+        </p></li><li><p>
+          In all other cases, a variable reference SHALL consist of a component reference and a
+          variable name. In this case, the variable reference SHALL be treated
+          as if it was present in the <code class="literal">component</code> element referenced by the
+          component reference.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320768766416"></a>17.3. Interpretation of encapsulation</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          For the purposes of this specification, there SHALL be a conceptual
+          encapsulation digraph in which there is one node for every
+          component in the CellML model.
+        </p></li><li><p>
+          Where a <code class="literal">component_ref</code> element appears as a child of another
+          <code class="literal">component_ref</code> element, then there SHALL be an arc in
+          the encapsulation digraph, and that arc SHALL be from the
+          component referenced by the parent <code class="literal">component_ref</code> element, and to the
+          component referenced by the child <code class="literal">component_ref</code> element.
+        </p></li><li><p>
+          The encapsulation digraph MUST NOT contain any loops or cycles,
+          and the in-degree of a node MUST NOT exceed one (that is, it must be
+          a forest).
+        </p></li><li><p>
+          The encapsulated set for a component A SHALL be the set of all
+          components to which there exists an arc in the encapsulation digraph
+          from the node corresponding to A.
+        </p></li><li><p>
+          The encapsulation parent for a component A SHALL be the component
+          corresponding to the node that is the parent node in the
+          encapsulation digraph of the node corresponding to A.
+        </p></li><li><p>
+          The sibling set for a component A SHALL be the set of all components
+          that have the same encapsulation parent as A, or in the case that A
+          has no encapsulation parent, SHALL be the set of all components that
+          do not have an encapsulation parent.
+        </p></li><li><p>
+          The hidden set for a component A SHALL be the set of all components
+          B where component B is not in the encapsulated set for component A,
+          and component B is not the encapsulation parent of component A,
+          and component B is not in the sibling set for component A.
+        </p></li><li><p>
+          CellML models MUST NOT contain <code class="literal">connection</code> elements such that the
+          component referenced by the <code class="literal">component_1</code> attribute is in the hidden set
+          of the component referenced by the <code class="literal">component_2</code> attribute.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320768753776"></a>17.4. Variable equivalence networks</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          A variable equivalence network SHALL be a graph with one
+          node for every <code class="literal">variable</code> element in the CellML model.
+        </p></li><li><p>
+          For every <code class="literal">map_variables</code> element present in the CellML Model, there SHALL
+          be an edge in the variable equivalence network.
+        </p></li><li><p>
+          One endpoint of the edge in the variable equivalence network SHALL
+          be the node corresponding to the variable (A) referenced by
+          the <code class="literal">component_1</code> and <code class="literal">variable_1</code> attributes.
+        </p></li><li><p>
+          One endpoint of the edge in the variable equivalence network SHALL
+          be the node corresponding to the variable (B) referenced by
+          the <code class="literal">component_2</code> and <code class="literal">variable_2</code> attributes.
+        </p></li><li><p>
+          CellML models MUST NOT contain any pair of <code class="literal">map_variables</code> elements that
+          each make reference to the same sets of variables (without regard to
+          whether the <code class="literal">variable_1</code> attribute of one <code class="literal">map_variables</code> element references
+          the variable referenced by the <code class="literal">variable_1</code> or <code class="literal">variable_2</code> attribute of
+          the other).
+        </p></li><li><p>
+          When the <code class="literal">component</code> parent element of variable A is in the sibling set of
+          the <code class="literal">component</code> parent element of variable B, the applicable
+          interface for variables A and B SHALL be the public interface.
+        </p></li><li><p>
+          Where the <code class="literal">component</code> parent element of variable A is in the
+          encapsulated set of the <code class="literal">component</code> parent element of variable B,
+          the applicable interface for variable A SHALL be the public interface,
+          and the applicable interface for variable B SHALL be the private
+          interface.
+        </p></li><li><p>
+          Where the <code class="literal">component</code> parent element of variable B is in the
+          encapsulated set of the <code class="literal">component</code> parent element of variable A,
+          the applicable interface for variable A SHALL be the private
+          interface, and the applicable interface for variable B SHALL be the
+          public interface.
+        </p></li><li><p>
+          For a given variable, if the applicable interface is the public
+          interface, the applicable interface attribute SHALL be the
+          <code class="literal">public_interface</code> attribute information item on the corresponding
+          <code class="literal">variable</code> element. If the applicable interface is the private
+          interface, the applicable interface attribute SHALL be the
+          <code class="literal">private_interface</code> attribute information item on the corresponding
+          variable element.
+        </p></li><li><p>
+          In any case, if the applicable interface attribute
+          is absent, the following rules in this section SHALL still apply as if
+          the applicable interface attribute was present, and had the value
+          <code class="literal">no</code>.
+        </p></li><li><p>
+          CellML models MUST NOT contain <code class="literal">map_variables</code> elements unless the
+          value of the applicable interface attributes on variables A and B are
+          both yes.
+        </p></li><li><p>
+          The variable equivalence network MUST NOT 
+          contain any cycles in the underlying graph (that is, it must be a
+          tree).
+        </p></li><li><p>
+          For the purposes of this specification, the <code class="literal">variable</code> elements in a
+          CellML Model SHALL be treated as belonging to one of several disjoint
+          sets of connected variables. Each set of connected variables is a
+          set of all variable elements for which the corresponding nodes
+          in the variable equivalence network form a connected set.
+          Each set of connected variables represents one variable in the
+          mathematical model.
+        </p></li><li><p>
+          For the purposes of this specification, for every set of connected
+          variables, one variable SHALL arbitrarily be selected as the source
+          variable. Within this specification, the variable in the mathematical
+          model is described as if it was in the units specified on the source
+          <code class="literal">variable</code> element.
+        </p></li><li><p>
+          All variables in a variable equivalence network MUST have the same
+          type.
+        </p></li><li><p>
+          If any of the variables in a variable equivalence network have a
+          <code class="literal">units</code> attribute, all variables in the variable equivalence network
+          MUST contain units that are dimensionally compatible with each other.
+        </p></li><li><p>
+          Two units are dimensionally compatible with each other if their canoncial
+          forms are made up of the same base units with the same exponents. The canonical
+          form of a unit is the form obtained by repeated expansion of units into their
+          component units, and simplification to add exponents of identical base units.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="units-reference"></a>17.5. Units reference</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          A units reference SHALL be a CellML identifier, and SHALL be
+          interpreted based on the context within the CellML Model in which it occurs.
+        </p></li><li><p>
+          A CellML Infoset MUST NOT contain a units reference to which all scoping rules are inapplicable.
+        </p></li><li><p>
+          Where more than one of the units scoping rules apply, the applicable rule
+          that appears first in this specification SHALL be used.
+        </p></li><li><p>The units scoping rules are as follows:</p><div class="orderedlist"><ol type="a"><li><p>
+              Where a units reference appears in an information item that is
+              descended from a <code class="literal">component</code> element, and there is a <code class="literal">units</code> element
+              child of that <code class="literal">component</code> element with a <code class="literal">name</code> attribute identical to
+              the units reference, then the units reference SHALL refer to that
+              <code class="literal">units</code> element.
+            </p></li><li><p>
+              Where a units reference appears in an information item that is descended from the <code class="literal">model</code> element, and there is a <code class="literal">units</code> element child of that <code class="literal">model</code> element with a <code class="literal">name</code> attribute identical to the units reference, then the units reference SHALL refer to that <code class="literal">units</code> element.
+            </p></li><li><p>
+              Where there is an import units element in the CellML Infoset, such that
+              the import units element has a name attribute identical to the units
+              reference, then the units reference SHALL be treated as if the
+              units reference appeared in the imported model, and referred to the
+              name specified in the <code class="literal">units_ref</code> attribute of the import units element.
+            </p></li><li><p>
+              Where the units reference is equal to a cell in the name column
+              of <a href="#units-table" title="Table 1. built-in units">Table 1, “built-in units”</a>, then the units reference SHALL be a
+              reference to the built-in unit corresponding to that row of the
+              table.
+            </p></li></ol></div></li></ol></div></div><div class="table"><a id="units-table"></a><p class="title"><b>Table 1. built-in units</b></p><table summary="built-in units" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Name</th><th>Is base unit?</th><th>Multiplier and dimensions in terms of base units</th><th>Offset from base units</th></tr></thead><tbody><tr><td>ampere</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>becquerel</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup>
+                  <mml:mi>second</mml:mi>
+                  <mml:mn>-1</mml:mn>
+                </mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>candela</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>celsius</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kelvin</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>273.15</td></tr><tr><td>coulomb</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:mi>second</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:mi>ampere</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>dimensionless</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mn>1</mml:mn>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>farad</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>kilogram</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>4</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>gram</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mn>10</mml:mn>
+                  <mml:mn>-3</mml:mn>
+                </mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>gray</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>henry</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>hertz</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>joule</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>katal</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>mole</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>kelvin</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>kilogram</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>liter</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mn>10</mml:mn>
+                  <mml:mn>-3</mml:mn>
+                </mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup>
+                  <mml:mi>metre</mml:mi>
+                  <mml:mn>3</mml:mn>
+                </mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>litre</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mn>10</mml:mn>
+                  <mml:mn>-3</mml:mn>
+                </mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup>
+                  <mml:mi>metre</mml:mi>
+                  <mml:mn>3</mml:mn>
+                </mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>lumen</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:mi>candela</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>lux</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup>
+                  <mml:mi>metre</mml:mi>
+                  <mml:mn>-2</mml:mn>
+                </mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>candela</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>meter</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:mi>metre</mml:mi>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>metre</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>mole</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>newton</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:mi>metre</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>ohm</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-3</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>pascal</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>radian</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>second</td><td>yes</td><td>-</td><td>-</td></tr><tr><td>siemens</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>kilogram</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>3</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>sievert</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>steradian</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>tesla</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>volt</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-3</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>watt</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-3</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr><tr><td>weber</td><td>no</td><td>
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+              <mml:mrow>
+                <mml:mn>1</mml:mn>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>metre</mml:mi><mml:mn>2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:mi>kilogram</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>second</mml:mi><mml:mn>-2</mml:mn></mml:msup>
+                <mml:mo>·</mml:mo>
+                <mml:msup><mml:mi>ampere</mml:mi><mml:mn>-1</mml:mn></mml:msup>
+              </mml:mrow>
+            </mml:math>
+          </td><td>0</td></tr></tbody></table></div><div class="table"><a id="prefix-table"></a><p class="title"><b>Table 2. Prefix values</b></p><table summary="Prefix values" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Prefix Name</th><th>Prefix Term</th></tr></thead><tbody><tr><td>yotta</td><td>24</td></tr><tr><td>zetta</td><td>21</td></tr><tr><td>exa</td><td>18</td></tr><tr><td>peta</td><td>15</td></tr><tr><td>tera</td><td>12</td></tr><tr><td>giga</td><td>9</td></tr><tr><td>mega</td><td>6</td></tr><tr><td>kilo</td><td>3</td></tr><tr><td>hecto</td><td>2</td></tr><tr><td>deka</td><td>1</td></tr><tr><td>deci</td><td>-1</td></tr><tr><td>centi</td><td>-2</td></tr><tr><td>milli</td><td>-3</td></tr><tr><td>micro</td><td>-6</td></tr><tr><td>nano</td><td>-9</td></tr><tr><td>pico</td><td>-12</td></tr><tr><td>femto</td><td>-15</td></tr><tr><td>atto</td><td>-18</td></tr><tr><td>zepto</td><td>-21</td></tr><tr><td>yocto</td><td>-24</td></tr></tbody></table></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="interpretation-of-units"></a>17.6. Interpretation of units</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          The base units SHALL consist of the user defined base units, and the
+          built-in base units (those units defined in rows of
+          <a href="#units-table" title="Table 1. built-in units">Table 1, “built-in units”</a> having 'yes' in the 'Is base unit?'
+          column).
+        </p></li><li><p>
+          There SHALL be one user defined base unit for every <code class="literal">units</code> element
+          that has a <code class="literal">base_units</code> attribute in the empty namespace, having value
+          yes.
+        </p></li><li><p>
+          The base unit reduction of a units reference SHALL consist of a
+          real valued offset, a real valued multiplier, and a set of
+          tuples each consisting of a base unit and a real valued exponent.
+          The base unit reduction of a  units reference SHALL be determined as
+          follows:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                Where the units reference is to a unit that is a base unit,
+                then the base unit reduction of the units reference SHALL have
+                offset zero, multiplier 1.0, and the set of tuples SHALL have a single
+                member, which SHALL consist of the base units being referenced
+                and the exponent 1.0.
+              </p></li><li><p>
+                Where the units reference is to built-in units other than a
+                base unit, then the base unit reduction SHALL be derived from
+                the row of <a href="#units-table" title="Table 1. built-in units">Table 1, “built-in units”</a> for which the value
+                in the 'Name' column matches the name of the units reference.
+                The offset of the base unit reduction SHALL be equal to the
+                number in the 'Offset from base units' column of the row, and
+                the multiplier SHALL be equal to the number at the start of
+                the 'Multiplier and dimensions in terms of base units' column
+                of the row.
+                The set of tuples SHALL contain one member for every built-in
+                base unit named in the 'Multiplier and dimensions in terms of
+                base units' column of the row, and each of these tuples SHALL
+                contain the built-in unit referenced, and the exponent appearing
+                in superscript immediately after the units name in the table
+                cell.
+              </p></li><li><p>
+                Where the units reference is to a unit that is neither built-in,
+                nor a base unit, the resultant base unit reduction SHALL be
+                defined as a composition of the base unit reductions referenced
+                from the unit element information items (the operand base unit
+                reductions), in accordance with the following rules:
+                </p><div class="orderedlist"><ol type="i"><li><p>
+                      The prefix term is a conceptual property of unit
+                      elements, defined here for later use. If the <code class="literal">unit</code> element
+                      does not have a <code class="literal">prefix</code> information item, the prefix term
+                      SHALL have value zero. If the <code class="literal">prefix</code>
+                      attribute information item has a value that is a real
+                      number string, then the prefix term SHALL have the
+                      corresponding numerical value. Otherwise, the
+                      <code class="literal">prefix</code> attribute information item MUST have a value taken
+                      from the 'Prefix Name' column of
+                      <a href="#prefix-table" title="Table 2. Prefix values">Table 2, “Prefix values”</a>, and the prefix term
+                      SHALL have the value taken from the 'Prefix Term' column
+                      of the same row.
+                    </p></li><li><p>
+                      The exponent term is a conceptual property of <code class="literal">unit</code>
+                      elements, defined here for later use. If a <code class="literal">unit</code> element
+                      has no <code class="literal">exponent</code> attribute information item, the exponent
+                      term SHALL have value 1.0. Otherwise, the value of the
+                      <code class="literal">exponent</code> attribute information item MUST be a real number
+                      string, and the value of the exponent term SHALL be the
+                      numerical value of that string.
+                    </p></li><li><p>
+                      The multiplier term is a conceptual property of <code class="literal">unit</code>
+                      elements, defined here for later use. The multiplier term
+                      SHALL be the real number value of the <code class="literal">multiplier</code> attribute
+                      information item on the <code class="literal">units</code> element (or 1.0 in the
+                      absence of such an attribute information item),
+                      multiplied by 10.0 raised to the power of the negative of
+                      the product of the prefix term and the exponent term.
+                    </p></li><li><p>
+                      The offset term is a conceptual property of unit
+                      elements, defined here for later use. If a unit element
+                      has no offset attribute information item, the offset
+                      term SHALL have value zero. Otherwise, the value of the
+                      offset attribute information item MUST be a real number
+                      string, and the value of the offset term SHALL be the
+                      numerical value of that string.
+                    </p></li><li><p>
+                      Where the units reference is to a <code class="literal">units</code> element with a
+                      single <code class="literal">unit</code> child element, then the resultant base unit
+                      reduction SHALL have multiplier equal to the product of
+                      the multiplier of the operand base unit reduction and the
+                      multiplier term of the unit element. It SHALL have offset
+                      equal to the sum of the offset of the operand base unit
+                      reduction and the offset term of the unit element.
+                    </p></li><li><p>
+                      Where the units reference is to a <code class="literal">units</code> element with a
+                      number of <code class="literal">unit</code> child elements not equal to one, then the
+                      resultant base unit reduction SHALL have multiplier equal
+                      to the product of the multipliers of each operand base
+                      unit reduction, and the multiplier term of each unit
+                      element.  It SHALL have offset equal to zero.
+                    </p></li><li><p>
+                      The set of tuples on the resultant base unit reduction
+                      SHALL have one member for every distinct base unit present
+                      in the set of tuples for any of the operand base unit
+                      reductions. The exponent alongside each of these base
+                      units in the resultant base unit reduction SHALL be the sum,
+                      across all tuples for the base unit from operand base
+                      unit reductions, of pairwise products of the exponent
+                      term on the corresponding unit element and the exponent
+                      from the tuple.
+                    </p></li></ol></div><p>
+              </p></li></ol></div><p>
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="units-on-variables"></a>17.7. The effect of units on variables</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          If present, the <code class="literal">units</code> attribute on a <code class="literal">variable</code> element MUST be a valid units
+          reference. The target of this units reference is referred to
+          as the variable units, and the corresponding base
+          units reduction is referred to as the variable base unit reduction.
+        </p></li><li><p>
+          The variable base unit reduction of a <code class="literal">variable</code> element MUST have an
+          identical set of tuples to the set of tuples on the source variable
+          base units reduction. Two sets of tuples SHALL be
+          considered identical if and only if neither set contains any tuple
+          not present in the other. Two tuples are considered identical if both
+          the base units and exponent on the tuple are the same.
+        </p></li><li><p>
+          The following symbols are defined for the purposes of the formulae in
+          the 'Interpretation of Mathematics' section:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+                  <mml:msub>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>V</mml:mi>
+                  </mml:msub>
+                </mml:math>
+                is the multiplier on the variable base unit reduction.
+              </p></li><li><p>
+                <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+                  <mml:msub>
+                    <mml:mi>o</mml:mi>
+                    <mml:mi>V</mml:mi>
+                  </mml:msub>
+                </mml:math>
+                is the offset on the variable base unit reduction.
+              </p></li><li><p>
+                <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+                  <mml:msub>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>S</mml:mi>
+                  </mml:msub>
+                </mml:math>
+                is the multiplier on the source variable base unit reduction.
+              </p></li><li><p>
+                <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+                  <mml:msub>
+                    <mml:mi>o</mml:mi>
+                    <mml:mi>S</mml:mi>
+                  </mml:msub>
+                </mml:math>
+                is the offset on the source variable base unit reduction.
+              </p></li></ol></div><p>
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="type-interpretation"></a>17.8. Interpretation of the <code class="literal">type</code> attribute</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          This section applies to the interpretation of the <code class="literal">type</code> attribute,
+          a mandatory attribute information item on a <code class="literal">variable</code> element.
+        </p></li><li><p>
+          The <code class="literal">type</code> attribute specifies the type that a variable should take.
+          A type SHALL define the type of variables that a variable may take,
+          but SHOULD NOT be used to describe the precise implementation-specific
+          details of how data is represented.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320768430176"></a>17.9. Interpretation of imports</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Each <code class="literal">import</code> element present in a CellML Infoset (the importing infoset)
+          SHALL define a new and separate instance of the CellML Infoset referenced
+          by the href attribute (the imported infoset).
+        </p></li><li><p>
+          The following <code class="literal">component</code> elements SHALL be "pertinent <code class="literal">component</code> elements":
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                all <code class="literal">component</code> elements in the top-level CellML
+                Infoset for the CellML Model, and,
+              </p></li><li><p>
+                all <code class="literal">component</code> elements referenced by import components in the top-level
+                CellML Infoset, and,
+              </p></li><li><p>
+                all <code class="literal">component</code> elements that are descendants in the encapsulation
+                digraph of a pertinent component element.
+              </p></li></ol></div><p>
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320768421216"></a>17.10. Interpretation of the mathematics</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          Where full content MathML can be translated into strict content MathML using a rule in the MathML specification, then the rules in this specification SHALL be applied as if the equivalent strict content MathML form had been used.
+        </p></li><li><p>
+          Every MathML element in the CellML Model which appears as a direct
+          child information item of the MathML <code class="literal">math</code> element information item,
+          which in turn appears as a child information item of a pertinent component
+          element, SHALL be treated as a statement which holds true
+          unconditionally.
+        </p></li><li><p>
+          Every MathML element that appears as a direct child information
+          item of the MathML <code class="literal">math</code> element information item SHALL be treated
+          as a statement that holds true unconditionally.
+        </p></li><li><p>
+          Every variable name given using the MathML <code class="literal">ci</code> element MUST either be:
+          </p><div class="orderedlist"><ol type="a"><li><p>
+                a reference to a variable name bound by a bind element ancestor of the
+                <code class="literal">ci</code> element.
+              </p></li><li><p>
+                a reference to a variable within the <code class="literal">component</code> element ancestor the
+                MathML is contained within.
+              </p></li></ol></div><p>
+        </p></li><li><p>
+          Where the same variable name is bound by more than one <code class="literal">bind</code> element ancestor of a <code class="literal">ci</code> element, the <code class="literal">ci</code> element SHALL refer only to the bound variable from the <code class="literal">bind</code> element that is the descendant of all those other <code class="literal">bind</code> elements. Where the same variable name is defined by a <code class="literal">bind</code> element ancestor of a <code class="literal">ci</code> element and a model variable, the variable SHALL be treated as a bound variable, and SHALL NOT be treated as a model variable.
+        </p></li><li><p>
+          Where a MathML <code class="literal">ci</code> element refers to a variable that is not in the independent
+          variable set, the variable SHALL be treated as if it was a lexical closure
+          over the independent variables of the application of each independent
+          variable to the function giving the value of the variable
+          in terms of each value of each independent variable.
+        </p></li><li><p>
+          The MathML csymbol element information item with name evaluatedAt in content
+          dictionary cellml1 shall refer to a
+          function of three operands. The first operand MUST be a MathML <code class="literal">ci</code> element referring
+          to a variable that is in independent variable set. The application of this <code class="literal">csymbol</code>
+          element shall be interpreted as meaning the value of the third operand, modified so
+          that all lexical closures of the independent variable given as the first operand are
+          removed and substituted for the value of the second operand.
+        </p></li><li><p>
+          Every variable reference to a variable of type <code class="literal">real</code> SHALL be treated as a
+          linear expression
+          <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML">
+            <mml:mrow>
+              <mml:mrow>
+                <mml:mfrac>
+                  <mml:msub>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>S</mml:mi>
+                  </mml:msub>
+                  <mml:msub>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>V</mml:mi>
+                  </mml:msub>
+                </mml:mfrac>
+                <mml:mo>×</mml:mo>
+                <mml:mi>x</mml:mi>
+              </mml:mrow>
+              <mml:mo>-</mml:mo>
+              <mml:msub>
+                <mml:mi>o</mml:mi>
+                <mml:mi>V</mml:mi>
+              </mml:msub>
+              <mml:mo>+</mml:mo>
+              <mml:mfrac>
+                <mml:msub>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>S</mml:mi>
+                </mml:msub>
+                <mml:msub>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>V</mml:mi>
+                </mml:msub>
+              </mml:mfrac>
+              <mml:mo>×</mml:mo>
+              <mml:msub>
+                <mml:mi>o</mml:mi>
+                <mml:mi>S</mml:mi>
+              </mml:msub>
+            </mml:mrow>
+          </mml:math>. In this equation, x represents the variable in the
+          mathematical model, in the units on the source variable element,
+          while the remaining variables SHALL be interpreted as specified in
+          <a href="#units-on-variables" title="17.7. The effect of units on variables">Section 17.7, “The effect of units on variables”</a>.
+        </p></li><li><p>
+          The MathML elements requiring additional type information are:
+          </p><div class="orderedlist"><ol type="a"><li><p>Every MathML <code class="literal">cn</code> element</p></li><li><p>Every MathML <code class="literal">ci</code> element that appears within a bvar element
+                    information item under a <code class="literal">bind</code> element information item.</p></li></ol></div><p>
+        </p></li><li><p>
+          Every MathML element requiring additional type information (as defined above) MUST have an attribute information item in
+          the CellML 1.2 namespace, with local name <code class="literal">type</code>. The value of this
+          attribute information item MUST be a valid type name.
+        </p></li><li><p>
+          A MathML element requiring additional type information (as defined above) MAY have an attribute information item in
+          the CellML 1.2 namespace, with local name <code class="literal">units</code>.
+          Where the <code class="literal">type</code> attribute takes the value
+          <code class="literal">real</code>, the <code class="literal">units</code> attribute
+          MUST be present.
+          The value of this
+          attribute information item MUST be a valid units reference. The
+          referenced units SHALL NOT affect the mathematical interpreation of
+          the CellML model. However, CellML Processing Software MAY use this
+          information to assist the user in the detection and correction of
+          units errors in the CellML Model.
+        </p></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="idm320768379952"></a>17.11. Type inference requirement</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>
+          In a valid model, it SHALL be possible to identify a single type for every mathematical expression or sub-expression.
+        </p></li><li><p>
+          The type identified for a MathML <code class="literal">ci</code> element for the purposes of this section
+          SHALL be the same type specified by the type attribute of the corresponding variable, or where the <code class="literal">ci</code> element refers to a bound variable, the type specified on <code class="literal">ci</code> child of the corresponding <code class="literal">bvar</code> element.
+        </p></li><li><p>
+          The type identified for a MathML <code class="literal">cn</code> element for the purposes of this section
+          SHALL be the same type specified by the type attribute in the CellML 1.2 namespace
+          on the <code class="literal">cn</code> element.
+        </p></li><li><p>
+          The MathML element information items <code class="literal">true</code> and <code class="literal">false</code> SHALL be identified as having type <code class="literal">boolean</code>.
+        </p></li><li><p>
+          The MathML element information items <code class="literal">exponentiale</code>, <code class="literal">pi</code>, and <code class="literal">eulergamma</code> SHALL be identified as
+          having type <code class="literal">real</code>.
+        </p></li><li><p>
+          The MathML <code class="literal">piecewise</code> element SHALL be identified as having the type of the first case value.
+          All case values in the <code class="literal">piecewise</code> element, and if present, the <code class="literal">otherwise</code> expression MUST
+          also be identified as having the same type. The case conditions MUST be identified as having
+          type <code class="literal">boolean</code>.
+        </p></li><li><p>
+          The type identification for all remaining MathML element information items, including for
+          the <code class="literal">apply</code> element information item with different operators, are left up to the secondary
+          specifications.
+        </p></li><li><p>
+          Secondary specifications MUST be written so that the type of any valid
+          mathematical expression can be uniquely inferred from the types
+          of the arguments.
+        </p></li></ol></div></div></div><div class="bibliography"><div class="titlepage"><div><div><h2 class="title"><a id="idm320768882144"></a>Normative References</h2></div></div></div><div class="biblioentry"><a id="RFC2119"></a><p>[RFC2119] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.ietf.org/rfc/rfc2119.txt" target="_top">
+        RFC 2119: Key words for use in RFCs to Indicate Requirement Levels
+      </a>
+    </em>. </span><span class="date">March 1997. </span></p></div><div class="biblioentry"><a id="XML"></a><p>[XML] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2006/REC-xml-20060816/" target="_top">
+Extensible Markup Language (XML) 1.0 (Fourth Edition)
+      </a>
+    </em>. </span><span class="date">16 August 2006. </span></p></div><div class="biblioentry"><a id="XML-INFOSET"></a><p>[XML-INFOSET] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2004/REC-xml-infoset-20040204/" target="_top">
+XML Information Set (Second Edition)
+      </a>
+    </em>. </span><span class="date">4 February 2004. </span></p></div><div class="biblioentry"><a id="XML-NAMESPACE"></a><p>[XML-NAMESPACE] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2006/REC-xml-names-20060816/" target="_top">
+Namespaces in XML (Second Edition)
+      </a>
+    </em>. </span><span class="date">16 August 2006. </span></p></div><div class="biblioentry"><a id="RDF-CONCEPTS"></a><p>[RDF-CONCEPTS] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210/" target="_top">
+Resource Description Framework (RDF): Concepts and Abstract Syntax
+      </a>
+    </em>. </span><span class="date">10 February 2004. </span></p></div><div class="biblioentry"><a id="RDF-XML"></a><p>[RDF-XML] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/" target="_top">
+RDF/XML Syntax Specification (revised)
+      </a>
+    </em>. </span><span class="date">10 February 2004. </span></p></div><div class="biblioentry"><a id="MathML"></a><p>[MathML] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2010/REC-MathML3-20101021/" target="_top">
+Mathematical Markup Language (MathML) Version 3.0
+      </a>
+    </em>. </span><span class="date">21 October 2003. </span></p></div><div class="biblioentry"><a id="XLINK"></a><p>[XLINK] <span class="citetitle"><em class="citetitle">
+      <a href="http://www.w3.org/TR/2001/REC-xlink-20010627/" target="_top">
+XML Linking Language (XLink) Version 1.0
+      </a>
+    </em>. </span><span class="date">27 June 2001. </span></p></div></div></div></body></html>
