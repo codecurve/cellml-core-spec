@@ -531,8 +531,8 @@ Interpretation of the mathematics
     removed and substituted for the value of the second operand.
 
 7.  Every variable reference to a variable of type ``real`` SHALL be
-    treated as a linear expression m S m V × x - o V + m S m V × o S. In
-    this equation, x represents the variable in the mathematical model,
+    treated as a linear expression :math:`\frac{m_{V}}{m_{S}} \cdot x - o_{V} + \frac{m_{S}}{m_{V}} \cdot o_{S}`
+    In this equation, x represents the variable in the mathematical model,
     in the units on the source variable element, while the remaining
     variables SHALL be interpreted as specified in ?.
 
