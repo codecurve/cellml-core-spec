@@ -1,3 +1,6 @@
+    THIS IS PROBABLY NOT WHAT YOU ARE LOOKING FOR.  It is an RST generated
+    version of some legacy work on the future CellML 1.2 spec.
+
     This document is an unofficial working draft. The below describes
     the intended status of the specification, and not the current status
     right now.
