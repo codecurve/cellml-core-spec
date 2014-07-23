@@ -1,4 +1,4 @@
-CellML 1.2 Specification
+NOT the "CellML 1.2 Specification:
 ========================
 
 .. include:: abstract.rst
