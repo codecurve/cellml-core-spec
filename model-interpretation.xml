@@ -1237,13 +1237,6 @@
       </listitem>
       <listitem>
         <para>
-          Every MathML element that appears as a direct child information
-          item of the MathML <literal>math</literal> element information item SHALL be treated
-          as a statement that holds true unconditionally.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           Every variable name given using the MathML <literal>ci</literal> element MUST either be:
           <orderedlist>
             <listitem>
