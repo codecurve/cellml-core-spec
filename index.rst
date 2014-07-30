@@ -7,7 +7,7 @@ NOT the "CellML 1.2 Specification":
    :maxdepth: 2
    :numbered:
 
-   definitions
+   terminology
    general-matters
    data-representation
    model-element-item
@@ -18,14 +18,14 @@ NOT the "CellML 1.2 Specification":
    unit-element-item
    component-element-item
    variable-element-item
-   group-element-item
-   relationship-ref-element-item
+   encapsulation-element-item
    component-ref-element-item
    connection-element-item
-   map-components-element-item
-   map-variables-element-item
+   map-variables-element
    model-interpretation
-   references
+   normative-references
+   secondary-specifications
+   spec-metadata
 
 
 Summary of all TODO's
